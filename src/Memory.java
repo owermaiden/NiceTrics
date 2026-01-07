@@ -22,11 +22,18 @@ public class Memory {
         int[] nums = {0,1,1,2,3,4};
         System.out.println(findMissingNumber(nums));
         System.out.println(getNumberOfDublicatedLetters("Hello"));
-        System.out.println(Arrays.toString(increaseArrayandReturnNewArray(nums)));
+        System.out.println(Arrays.toString(increaseArrayAndReturnNewArray(nums)));
         System.out.println(removeDuplicatesFromArray(nums));
         int[] numbers = {2, 4, 9, 16};
         System.out.println(findWholeSquareNumbers(numbers));
         System.out.println(reverseStringInPlace("Hello"));
+        System.out.println(reduceString("Hello"));
+        System.out.println(stringCompare("Hello"));
+    }
+
+    private static boolean stringCompare(String input) {
+        return IntStream.range(1, input.length())
+                .anyMatch(i -> input.charAt(i) < input.charAt(i - 1));
     }
 
     private static Map<Character, Integer> getCountOfCharacters(String s) {
@@ -147,7 +154,7 @@ public class Memory {
                 .count();
     }
 
-    static int[] increaseArrayandReturnNewArray(int[] digits) {
+    static int[] increaseArrayAndReturnNewArray(int[] digits) {
         StringBuilder number = new StringBuilder();
         for (int eachNum : digits) {
             number.append(eachNum);
@@ -189,6 +196,13 @@ public class Memory {
             s[j] = ch;
         }
         return new String(s);
+    }
+
+
+    public static String reduceString(String str){
+        if (str.isEmpty()) return "";
+        System.out.println(str);
+        return reduceString(str.substring(0, str.length() - 1));
     }
 
 
